@@ -1,0 +1,192 @@
+﻿<!doctype HTML>
+<html>
+<head>
+	<meta charset = "utf-8"/>
+	<link rel = "shortcut icon" href = "#"/>
+	<link rel = "stylesheet" href = "css/zeroing.css"/>
+	<link rel = "stylesheet" href = "css/style.css"/>
+	<script src = "js/script.js"></script>
+	<title>Планировщик</title>
+	<meta name = "description" content = "#"/>
+	<meta name = "viewport" content = "width = device-width, initial-scale = 1.0"/>
+</head>
+<body>
+	<header>
+		<div id = "planningRange">Январь 2023</div>
+		<select id = "monthSelect">
+			<option>Январь</option>
+			<option>Февраль</option>
+			<option>Март</option>
+			<option>Апрель</option>
+			<option>Май</option>
+			<option>Июнь</option>
+			<option>Июль</option>
+			<option>Август</option>
+			<option>Сентябрь</option>
+			<option>Октябрь</option>
+			<option>Ноябрь</option>
+			<option>Декабрь</option>
+		</select>
+		<select id = "yearSelect">
+			<option>2022</option>
+			<option>2023</option>
+			<option>2024</option>
+			<option>2025</option>
+			<option>2026</option>
+		</select>
+	</header>
+	<main>
+
+<!---------------------------event day window--------------------------->
+		<div id = "eventDayList">
+			<div id = "dayOfWeek">Воскресенье</div>
+			<div id = "dateOfCell">8 января</div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div id = "eventList">Нет событий</div>
+			<div id = "buttonNewEvent">Новое событие &nbsp +</div>
+
+		</div>
+<!-----------------------------eventTable------------------------------->
+		<div id = "eventTable">
+			<div class = "eventListItem">
+				<div class = "timeOfEvent">12:00 - 12:30</div>
+				<div class = "titleOfEvent">Какое-то напоминание lsghoiewgijwe</div>
+				<img class = "importanceOfEvent" src = "img/bellYellow.png" alt = "Важность"/>
+				<img class = "goToEvent" src = "img/arrowSelect.png" alt = "Перейти к событию"/>
+			</div>
+			<div class = "eventListItem">
+				<div class = "timeOfEvent">12:00 - 12:30</div>
+				<div class = "titleOfEvent">Какое-то напоминание</div>
+				<img class = "importanceOfEvent" src = "img/bellYellow.png" alt = "Важность"/>
+				<img class = "goToEvent" src = "img/arrowSelect.png" alt = "Перейти к событию"/>
+			</div>
+			<div class = "eventListItem">
+				<div class = "timeOfEvent">12:00 - 12:30</div>
+				<div class = "titleOfEvent">Какое-то напоминание</div>
+				<img class = "importanceOfEvent" src = "img/bellYellow.png" alt = "Важность"/>
+				<img class = "goToEvent" src = "img/arrowSelect.png" alt = "Перейти к событию"/>
+			</div>
+			<div class = "eventListItem">
+				<div class = "timeOfEvent">12:00 - 12:30</div>
+				<div class = "titleOfEvent">Какое-то напоминание</div>
+				<img class = "importanceOfEvent" src = "img/bellYellow.png" alt = "Важность"/>
+				<img class = "goToEvent" src = "img/arrowSelect.png" alt = "Перейти к событию"/>
+			</div>
+			<div class = "eventListItem">
+				<div class = "timeOfEvent">12:00 - 12:30</div>
+				<div class = "titleOfEvent">Какое-то напоминание</div>
+				<img class = "importanceOfEvent" src = "img/bellYellow.png" alt = "Важность"/>
+				<img class = "goToEvent" src = "img/arrowSelect.png" alt = "Перейти к событию"/>
+			</div>
+			<div class = "eventListItem">
+				<div class = "timeOfEvent">12:00 - 12:30</div>
+				<div class = "titleOfEvent">Какое-то напоминание</div>
+				<img class = "importanceOfEvent" src = "img/bellYellow.png" alt = "Важность"/>
+				<img class = "goToEvent" src = "img/arrowSelect.png" alt = "Перейти к событию"/>
+			</div>
+			<div class = "eventListItem">
+				<div class = "timeOfEvent">12:00 - 12:30</div>
+				<div class = "titleOfEvent">Какое-то напоминание</div>
+				<img class = "importanceOfEvent" src = "img/bellYellow.png" alt = "Важность"/>
+				<img class = "goToEvent" src = "img/arrowSelect.png" alt = "Перейти к событию"/>
+			</div>
+		</div>
+<!-----------------------------new Edit Event Window-------------------->
+		<div id = "newEditEventWindow">
+			<div id = "dayOfWeek">Воскресенье</div>
+			<div id = "dateOfCell">8 января</div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<input type = "text" placeholder = "Название" id = "titleOfEvent">
+			<textarea placeholder = "Описание" id = "descriptionOfEvent"></textarea>
+			<div>
+				<span style = "margin-right:15px;">Важность</span>
+				<img src = "img/bellYellow.png" alt = "Желтая важность"/>
+				<img src = "img/bellRed.png" alt = "Красная важность"/>
+				<span style = "margin-left:30px;">Время</span>
+				<input type = "time" id = "timeOfEvent" >
+			</div>
+			<div id = "buttonAddEvent">Добавить событие</div>
+		</div>
+<!-----------------------------selected Event Window-------------------->
+		<div id = "selectedEventWindow">
+			<div id = "dayOfWeek">Воскресенье</div>
+			<div id = "dateOfCell">8 января</div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div id = "viewTitleOfEvent">
+				<img src = "img/bellYellow.png" alt = "Важность"/>
+				<div id = "titleTextSelectedEvent">Название выбранного события</div>
+				<div id = "timeSelectedEvent">12:00 - 12:20</div>
+			</div>
+			<div id = "viewDescriptionOfEvent">Написать письмо Ивану из сколково</div>
+			<div id = "deleteButton">Удалить</div>
+			<div id = "editButton">Редактировать</div>
+			<div id = "newEventButton">Новое событие</div>
+		</div>
+
+<!-----------------------------main table------------------------------->
+		<div class = "mainTable">
+			<div id = "cell_1_1" class = "weekDayHeader">Понедельник</div>
+			<div id = "cell_1_2" class = "weekDayHeader">Вторник</div>
+			<div id = "cell_1_3" class = "weekDayHeader">Среда</div>
+			<div id = "cell_1_4" class = "weekDayHeader">Четверг</div>
+			<div id = "cell_1_5" class = "weekDayHeader">Пятница</div>
+			<div id = "cell_1_6" class = "weekDayHeader">Суббота</div>
+			<div id = "cell_1_7" class = "weekDayHeader">Воскресенье</div>
+
+			<div id = "cell_2_1"></div>
+			<div id = "cell_2_2"></div>
+			<div id = "cell_2_3"></div>
+			<div id = "cell_2_4"></div>
+			<div id = "cell_2_5"></div>
+			<div id = "cell_2_6"></div>
+			<div id = "cell_2_7">1</div>
+
+			<div id = "cell_3_1" style = "background-color:#f3f3f3;">2</div>
+			<div id = "cell_3_2" style = "background-color:#f3f3f3;">3</div>
+			<div id = "cell_3_3" style = "background-color:#f3f3f3;">4</div>
+			<div id = "cell_3_4" style = "background-color:#f3f3f3;">5</div>
+			<div id = "cell_3_5" style = "background-color:#f3f3f3;">6</div>
+			<div id = "cell_3_6" style = "background-color:#f3f3f3;">7</div>
+			<div id = "cell_3_7" style = "background-color:#f3f3f3;">8</div>
+
+			<div id = "cell_4_1">9</div>
+			<div id = "cell_4_2">10</div>
+			<div id = "cell_4_3">11</div>
+			<div id = "cell_4_4">12</div>
+			<div id = "cell_4_5">13</div>
+			<div id = "cell_4_6">14</div>
+			<div id = "cell_4_7">15</div>
+
+			<div id = "cell_5_1" style = "background-color:#f3f3f3;">16</div>
+			<div id = "cell_5_2" style = "background-color:#f3f3f3;">17</div>
+			<div id = "cell_5_3" style = "background-color:#f3f3f3;">18</div>
+			<div id = "cell_5_4" style = "background-color:#f3f3f3;">19</div>
+			<div id = "cell_5_5" style = "background-color:#f3f3f3;">20</div>
+			<div id = "cell_5_6" style = "background-color:#f3f3f3;">21</div>
+			<div id = "cell_5_7" style = "background-color:#f3f3f3;">22</div>
+
+			<div id = "cell_6_1">23</div>
+			<div id = "cell_6_2">24</div>
+			<div id = "cell_6_3">25</div>
+			<div id = "cell_6_4">26</div>
+			<div id = "cell_6_5">27</div>
+			<div id = "cell_6_6">28</div>
+			<div id = "cell_6_7">29</div>
+
+			<div id = "cell_7_1" style = "background-color:#f3f3f3;">30</div>
+			<div id = "cell_7_2" style = "background-color:#f3f3f3;"></div>
+			<div id = "cell_7_3" style = "background-color:#f3f3f3;"></div>
+			<div id = "cell_7_4" style = "background-color:#f3f3f3;"></div>
+			<div id = "cell_7_5" style = "background-color:#f3f3f3;"></div>
+			<div id = "cell_7_6" style = "background-color:#f3f3f3;"></div>
+			<div id = "cell_7_7" style = "background-color:#f3f3f3;"></div>
+		</div>
+	</main>
+</body>
+</html>
