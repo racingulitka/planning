@@ -268,7 +268,7 @@ main{
 /*------------------------new Edit Event Window------------------------------------*/
 
 #newEditEventWindow{
-	display:block;
+	display:none;
 	width:600px;
 	height:400px;
 	background:white;
