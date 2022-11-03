@@ -12,7 +12,7 @@
 </head>
 <body>
 	<header>
-		<div id = "planningRange">Март 2023</div>
+		<div id = "planningRange">Январь 2022</div>
 		<select id = "monthSelect" oninput = "rangeSelect();">
 			<option>Январь</option>
 			<option>Февраль</option>
@@ -39,13 +39,13 @@
 
 <!---------------------------event day window--------------------------->
 		<div id = "eventDayList">
-			<div id = "dayOfWeek">Воскресенье</div>
-			<div id = "dateOfCell">8 января</div>
+			<div class = "dayOfWeek" id = "dayOfWeek">Воскресенье</div>
+			<div class = "dateOfCell" id = "dateOfCell">8 января</div>
 			<div></div>
 			<div></div>
-			<div></div>
+			<div onclick = "closeEventDayWindow();"></div>
 			<div id = "eventList">Нет событий</div>
-			<div id = "buttonNewEvent">Новое событие &nbsp +</div>
+			<div id = "buttonNewEvent" onclick="createNewEvent();">Новое событие &nbsp +</div>
 
 		</div>
 <!-----------------------------eventTable------------------------------->
@@ -95,21 +95,21 @@
 		</div>
 <!-----------------------------new Edit Event Window-------------------->
 		<div id = "newEditEventWindow">
-			<div id = "dayOfWeek">Воскресенье</div>
-			<div id = "dateOfCell">8 января</div>
+			<div class = "dayOfWeek" id = "dayOfWeekEdit">Воскресенье</div>
+			<div class = "dateOfCell" id = "dateOfCellEdit">8 января</div>
 			<div></div>
 			<div></div>
-			<div></div>
+			<div onclick = 'closeNewEditEventWindow();'></div>
 			<input type = "text" placeholder = "Название" id = "titleOfEvent">
 			<textarea placeholder = "Описание" id = "descriptionOfEvent"></textarea>
 			<div>
 				<span style = "margin-right:15px;">Важность</span>
-				<img src = "img/bellYellow.png" alt = "Желтая важность"/>
-				<img src = "img/bellRed.png" alt = "Красная важность"/>
+				<img src = "img/bellYellow.png" alt = "Желтая важность" id = "bellYellowEdit" onclick = "getImportance('yellow');"/>
+				<img src = "img/bellRed.png" alt = "Красная важность" id = "bellRedEdit" onclick = "getImportance('red');"/>
 				<span style = "margin-left:30px;">Время</span>
 				<input type = "time" id = "timeOfEvent" >
 			</div>
-			<div id = "buttonAddEvent">Добавить событие</div>
+			<div id = "buttonAddEvent" onclick = "addEvent();">Добавить событие</div>
 		</div>
 <!-----------------------------selected Event Window-------------------->
 		<div id = "selectedEventWindow">
@@ -139,53 +139,53 @@
 			<div id = "cell_1_6" class = "weekDayHeader">Суббота</div>
 			<div id = "cell_1_7" class = "weekDayHeader">Воскресенье</div>
 
-			<div id = "cell_2_1"></div>
-			<div id = "cell_2_2"></div>
-			<div id = "cell_2_3"></div>
-			<div id = "cell_2_4"></div>
-			<div id = "cell_2_5"></div>
-			<div id = "cell_2_6"></div>
-			<div id = "cell_2_7">1</div>
+			<div id = "cell_2_1" onclick = "eventDayWindow('cell_2_1');"></div>
+			<div id = "cell_2_2" onclick = "eventDayWindow('cell_2_2');"></div>
+			<div id = "cell_2_3" onclick = "eventDayWindow('cell_2_3');"></div>
+			<div id = "cell_2_4" onclick = "eventDayWindow('cell_2_4');"></div>
+			<div id = "cell_2_5" onclick = "eventDayWindow('cell_2_5');"></div>
+			<div id = "cell_2_6" onclick = "eventDayWindow('cell_2_6');"></div>
+			<div id = "cell_2_7" onclick = "eventDayWindow('cell_2_7');">1</div>
 
-			<div id = "cell_2_8" style = "background-color:#f3f3f3;">2</div>
-			<div id = "cell_2_9" style = "background-color:#f3f3f3;">3</div>
-			<div id = "cell_2_10" style = "background-color:#f3f3f3;">4</div>
-			<div id = "cell_2_11" style = "background-color:#f3f3f3;">5</div>
-			<div id = "cell_2_12" style = "background-color:#f3f3f3;">6</div>
-			<div id = "cell_2_13" style = "background-color:#f3f3f3;">7</div>
-			<div id = "cell_2_14" style = "background-color:#f3f3f3;">8</div>
+			<div id = "cell_2_8" style = "background-color:#f3f3f3;" onclick = "eventDayWindow('cell_2_8');">2</div>
+			<div id = "cell_2_9" style = "background-color:#f3f3f3;" onclick = "eventDayWindow('cell_2_9');">3</div>
+			<div id = "cell_2_10" style = "background-color:#f3f3f3;" onclick = "eventDayWindow('cell_2_10');">4</div>
+			<div id = "cell_2_11" style = "background-color:#f3f3f3;" onclick = "eventDayWindow('cell_2_11');">5</div>
+			<div id = "cell_2_12" style = "background-color:#f3f3f3;" onclick = "eventDayWindow('cell_2_12');">6</div>
+			<div id = "cell_2_13" style = "background-color:#f3f3f3;" onclick = "eventDayWindow('cell_2_13');">7</div>
+			<div id = "cell_2_14" style = "background-color:#f3f3f3;" onclick = "eventDayWindow('cell_2_14');">8</div>
 
-			<div id = "cell_2_15">9</div>
-			<div id = "cell_2_16">10</div>
-			<div id = "cell_2_17">11</div>
-			<div id = "cell_2_18">12</div>
-			<div id = "cell_2_19">13</div>
-			<div id = "cell_2_20">14</div>
-			<div id = "cell_2_21">15</div>
+			<div id = "cell_2_15" onclick = "eventDayWindow('cell_2_15');">9</div>
+			<div id = "cell_2_16" onclick = "eventDayWindow('cell_2_16');">10</div>
+			<div id = "cell_2_17" onclick = "eventDayWindow('cell_2_17');">11</div>
+			<div id = "cell_2_18" onclick = "eventDayWindow('cell_2_18');">12</div>
+			<div id = "cell_2_19" onclick = "eventDayWindow('cell_2_19');">13</div>
+			<div id = "cell_2_20" onclick = "eventDayWindow('cell_2_20');">14</div>
+			<div id = "cell_2_21" onclick = "eventDayWindow('cell_2_21');">15</div>
 
-			<div id = "cell_2_22" style = "background-color:#f3f3f3;">16</div>
-			<div id = "cell_2_23" style = "background-color:#f3f3f3;">17</div>
-			<div id = "cell_2_24" style = "background-color:#f3f3f3;">18</div>
-			<div id = "cell_2_25" style = "background-color:#f3f3f3;">19</div>
-			<div id = "cell_2_26" style = "background-color:#f3f3f3;">20</div>
-			<div id = "cell_2_27" style = "background-color:#f3f3f3;">21</div>
-			<div id = "cell_2_28" style = "background-color:#f3f3f3;">22</div>
+			<div id = "cell_2_22" style = "background-color:#f3f3f3;" onclick = "eventDayWindow('cell_2_22');">16</div>
+			<div id = "cell_2_23" style = "background-color:#f3f3f3;" onclick = "eventDayWindow('cell_2_23');">17</div>
+			<div id = "cell_2_24" style = "background-color:#f3f3f3;" onclick = "eventDayWindow('cell_2_24');">18</div>
+			<div id = "cell_2_25" style = "background-color:#f3f3f3;" onclick = "eventDayWindow('cell_2_25');">19</div>
+			<div id = "cell_2_26" style = "background-color:#f3f3f3;" onclick = "eventDayWindow('cell_2_26');">20</div>
+			<div id = "cell_2_27" style = "background-color:#f3f3f3;" onclick = "eventDayWindow('cell_2_27');">21</div>
+			<div id = "cell_2_28" style = "background-color:#f3f3f3;" onclick = "eventDayWindow('cell_2_28');">22</div>
 
-			<div id = "cell_2_29"></div>
-			<div id = "cell_2_30"></div>
-			<div id = "cell_2_31"></div>
-			<div id = "cell_2_32"></div>
-			<div id = "cell_2_33"></div>
-			<div id = "cell_2_34"></div>
-			<div id = "cell_2_35"></div>
+			<div id = "cell_2_29" onclick = "eventDayWindow('cell_2_29');"></div>
+			<div id = "cell_2_30" onclick = "eventDayWindow('cell_2_30');"></div>
+			<div id = "cell_2_31" onclick = "eventDayWindow('cell_2_31');"></div>
+			<div id = "cell_2_32" onclick = "eventDayWindow('cell_2_32');"></div>
+			<div id = "cell_2_33" onclick = "eventDayWindow('cell_2_33');"></div>
+			<div id = "cell_2_34" onclick = "eventDayWindow('cell_2_34');"></div>
+			<div id = "cell_2_35" onclick = "eventDayWindow('cell_2_35');"></div>
 
-			<div id = "cell_2_36" style = "background-color:#f3f3f3;"></div>
-			<div id = "cell_2_37" style = "background-color:#f3f3f3;"></div>
-			<div id = "cell_2_38" style = "background-color:#f3f3f3;"></div>
-			<div id = "cell_2_39" style = "background-color:#f3f3f3;"></div>
-			<div id = "cell_2_40" style = "background-color:#f3f3f3;"></div>
-			<div id = "cell_2_41" style = "background-color:#f3f3f3;"></div>
-			<div id = "cell_2_42" style = "background-color:#f3f3f3;"></div>
+			<div id = "cell_2_36" style = "background-color:#f3f3f3;" onclick = "eventDayWindow('cell_2_36');"></div>
+			<div id = "cell_2_37" style = "background-color:#f3f3f3;" onclick = "eventDayWindow('cell_2_37');"></div>
+			<div id = "cell_2_38" style = "background-color:#f3f3f3;" onclick = "eventDayWindow('cell_2_38');"></div>
+			<div id = "cell_2_39" style = "background-color:#f3f3f3;" onclick = "eventDayWindow('cell_2_39');"></div>
+			<div id = "cell_2_40" style = "background-color:#f3f3f3;" onclick = "eventDayWindow('cell_2_40');"></div>
+			<div id = "cell_2_41" style = "background-color:#f3f3f3;" onclick = "eventDayWindow('cell_2_41');"></div>
+			<div id = "cell_2_42" style = "background-color:#f3f3f3;" onclick = "eventDayWindow('cell_2_42');"></div>
 		</div>
 	</main>
 </body>

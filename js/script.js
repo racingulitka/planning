@@ -2,6 +2,7 @@
 let a;
 let b;
 let numberDaysOfMonth;
+let z; //date of selected day
 
 window.onload = function(){
 	selectedMonth();
@@ -158,4 +159,102 @@ function rangeSelect(){
 	document.getElementById('planningRange').innerHTML = document.getElementById('monthSelect').value + " " + document.getElementById('yearSelect').value;
 	selectedMonth();
 }
-/*--------------------------------------*/
+/*-----------------event day window---------------------*/
+function eventDayWindow(cellNumber){
+	if (document.getElementById(`${cellNumber}`).innerHTML == ""){
+		document.getElementById('eventDayList').style.cssText = "display:none;";
+	}
+	else{
+		document.getElementById('eventDayList').style.cssText = "display:block;";
+	}
+	let monthWord;
+	switch (document.getElementById('monthSelect').value){
+		case "Январь": monthWord = "января";
+		break;
+		case "Февраль": monthWord = "февраля";
+		break;
+		case "Март": monthWord = "марта";
+		break;
+		case "Апрель": monthWord = "апреля";
+		break;
+		case "Май": monthWord = "мая";
+		break;
+		case "Июнь": monthWord = "июня";
+		break;
+		case "Июль": monthWord = "июля";
+		break;
+		case "Август": monthWord = "августа";
+		break;
+		case "Сентябрь": monthWord = "сентября";
+		break;
+		case "Октябрь": monthWord = "октября";
+		break;
+		case "Ноябрь": monthWord = "ноября";
+		break;
+		case "Декабрь": monthWord = "декабря";
+		break;
+	}
+	document.getElementById('dateOfCell').innerHTML = `${document.getElementById(`${cellNumber}`).innerHTML} ${monthWord}`;
+	z = document.getElementById(`${cellNumber}`).innerHTML;
+	document.getElementById('dayOfWeek').innerHTML = getDayOfWeekForWindow();
+
+}
+
+function getDayOfWeekForWindow(){
+	let selectedDate = a.split("");
+	selectedDate.pop();
+	selectedDate.pop();
+	selectedDate = selectedDate.join("");
+	if (z.length = 1){
+		z = "0" + z;
+	}
+	selectedDate = selectedDate + z;
+	selectedDate = new Date(selectedDate).getDay();
+	let x = ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота']
+	return x[selectedDate];
+}
+
+function closeEventDayWindow(){
+	document.getElementById('eventDayList').style.cssText = "display:none;"
+}
+
+/*-------------------new edit event window-------------------*/
+
+function createNewEvent(){
+	document.getElementById('newEditEventWindow').style.cssText = "display:block;";
+	document.getElementById('eventDayList').style.cssText = "display:none;";
+	document.getElementById('dateOfCellEdit').innerHTML = document.getElementById('dateOfCell').innerHTML;
+	document.getElementById('dayOfWeekEdit').innerHTML = document.getElementById('dayOfWeek').innerHTML;
+}
+
+function closeNewEditEventWindow(){
+	document.getElementById('newEditEventWindow').style.cssText = "display:none;"
+}
+
+/*-----------------------addEvent--------------------------*/
+
+function addEvent(){
+	let name, description, importance, dateTime;
+	name = document.getElementById("titleOfEvent").value;
+	description = document.getElementById('descriptionOfEvent').value;
+	//importance = 
+}
+
+function getImportance(color){
+
+	if (color == "yellow"){
+		if (getComputedStyle(bellYellowEdit).border == '0px none rgb(0, 0, 0)'){
+			document.getElementById('bellYellowEdit').style.cssText = "border:1px solid black;";
+			document.getElementById('bellRedEdit').style.cssText = 'border:0px none rgb(0, 0, 0);';
+		} else {
+			document.getElementById('bellYellowEdit').style.cssText = "0px none rgb(0, 0, 0);";
+		}
+	} else {
+		if (getComputedStyle(bellRedEdit).border == '0px none rgb(0, 0, 0)') {
+			document.getElementById('bellRedEdit').style.cssText = "border:1px solid black;";
+			document.getElementById('bellYellowEdit').style.cssText = 'border:0px none rgb(0, 0, 0);';
+		} else {
+			document.getElementById('bellRedEdit').style.cssText = "0px none rgb(0, 0, 0);";
+		}
+	}
+}
