@@ -197,6 +197,7 @@ function eventDayWindow(cellNumber){
 	document.getElementById('dateOfCell').innerHTML = `${document.getElementById(`${cellNumber}`).innerHTML} ${monthWord}`;
 	z = document.getElementById(`${cellNumber}`).innerHTML;
 	document.getElementById('dayOfWeek').innerHTML = getDayOfWeekForWindow();
+	eventDayWindowCheckForEvents();
 
 }
 
@@ -215,7 +216,9 @@ function getDayOfWeekForWindow(){
 }
 
 function closeEventDayWindow(){
-	document.getElementById('eventDayList').style.cssText = "display:none;"
+	document.getElementById('eventDayList').style.cssText = "display:none;";
+	document.getElementById('eventTable').style.cssText = "display:none;"
+
 }
 
 /*-------------------new edit event window-------------------*/
@@ -237,7 +240,19 @@ function addEvent(){
 	let name, description, importance, dateTime;
 	name = document.getElementById("titleOfEvent").value;
 	description = document.getElementById('descriptionOfEvent').value;
-	//importance = 
+	importance = getImportanceToEvent();
+	dateTime = a.split('');
+	dateTime.pop();
+	dateTime.pop();
+	dateTime = dateTime.join('');
+	dateTime = dateTime + z + 'T' + document.getElementById('timeOfEvent').value;
+	let obj = {
+		name: name,
+		description: description,
+		importance: getImportanceToEvent(),
+		dateTime: dateTime
+	}
+	localStorage.setItem(dateTime, obj);
 }
 
 function getImportance(color){
@@ -255,6 +270,43 @@ function getImportance(color){
 			document.getElementById('bellYellowEdit').style.cssText = 'border:0px none rgb(0, 0, 0);';
 		} else {
 			document.getElementById('bellRedEdit').style.cssText = "0px none rgb(0, 0, 0);";
+		}
+	}
+}
+
+function getImportanceToEvent(){
+	if (getComputedStyle(bellYellowEdit).border == '1px solid rgb(0, 0, 0)') {
+		return 1;
+	} else if (getComputedStyle(bellRedEdit).border == '1px solid rgb(0, 0, 0)') {
+		return 2;
+	} else return 0;
+}
+
+function eventDayWindowCheckForEvents(){
+	let temp1, temp2;
+	let events = [];
+
+	for (i in localStorage){
+		temp2 = i.split('');
+		for (j = 0; j < 6 ; j++){
+			temp2.pop();
+		}
+		temp2 = temp2.join('');
+
+		temp1 = a.split('');
+		for (j = 0; j < 3; j++){
+			temp1.pop();
+		}
+		temp1 = temp1.join('');
+		temp1 = temp1 + "-" + z;
+
+		if (temp2 == temp1){
+			document.getElementById('eventTable').style.cssText = "display:block;";
+			events["event" + i] = document.createElement('div');
+			events["event" + i].className = 'eventListItem';
+			events["event" + i].innerHTML = "event for example";
+			let some = document.getElementById("eventTable");
+			document.getElementById("eventTable").append(events["event" + i]);
 		}
 	}
 }
