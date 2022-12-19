@@ -305,7 +305,6 @@ function eventDayWindowCheckForEvents(){
 			events["event" + i] = document.createElement('div');
 			events["event" + i].className = 'eventListItem';
 			events["event" + i].innerHTML = "event for example";
-			let some = document.getElementById("eventTable");
 			document.getElementById("eventTable").append(events["event" + i]);
 		}
 	}
